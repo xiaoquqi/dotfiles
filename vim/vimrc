@@ -22,6 +22,7 @@ Bundle 'tpope/vim-rails.git'
 Bundle 'maksimr/vim-jsbeautify.git'
 Bundle 'tpope/vim-fugitive'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+Bundle 'ervandew/supertab'
 " vim-scripts repos
 Bundle 'L9'
 Bundle 'FuzzyFinder'
@@ -153,7 +154,13 @@ let Tlist_Exit_OnlyWindow=1
 
 " ======================= Rails ==========================
 " Change which file opens after executing :Rails command
+
 let g:rails_default_file='config/database.yml'
+
+" ===================== supertab =========================
+
+let g:SuperTabRetainCompletionType = 2
+let g:SuperTabDefaultCompletionType = '<C-X><C-U>'
 
 for f in split(glob('~/.vim/plugin/settings/*.vim'), '\n')
   exe 'source' f

@@ -20,3 +20,4 @@ Install vim plugins:
 or use command line:
 
     vim +BundleInstall +qall
+
