@@ -28,6 +28,8 @@ Bundle 'FuzzyFinder'
 Bundle 'AutoComplPop'
 Bundle 'taglist.vim'
 Bundle 'winmanager'
+Bundle 'Markdown'
+Bundle 'jQuery'
 " non github repos
 " Bundle 'git://git.wincent.com/command-t.git'
 
