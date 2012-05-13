@@ -1,0 +1,158 @@
+" Use Vim settings, rather then Vi settings (much better!).
+" This must be first, because it changes other options as a side effect.
+set nocompatible
+
+" ================ Vundle Initialization =================
+" This loads all the plugins in ~/.vim/bundle
+" Use vundle plugin to manage all other plugins
+
+filetype off                   " required!
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required! 
+Bundle 'gmarik/vundle'
+
+" My Bundles here:
+"
+" original repos on github
+Bundle 'tpope/vim-rails.git'
+Bundle 'maksimr/vim-jsbeautify.git'
+Bundle 'tpope/vim-fugitive'
+Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
+" vim-scripts repos
+Bundle 'L9'
+Bundle 'FuzzyFinder'
+Bundle 'AutoComplPop'
+Bundle 'taglist.vim'
+Bundle 'winmanager'
+" non github repos
+" Bundle 'git://git.wincent.com/command-t.git'
+
+filetype plugin indent on     " required!
+
+"
+" Brief help
+" :BundleList          - list configured bundles
+" :BundleInstall(!)    - install(update) bundles
+" :BundleSearch(!) foo - search(or refresh cache first) for foo
+" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
+"
+" see :h vundle for more details or wiki for FAQ
+" NOTE: comments after Bundle command are not allowed..
+
+" ==================== General Config ====================
+
+set ruler                       "Show ruler
+set number                      "Line numbers are good
+set backspace=indent,eol,start  "Allow backspace in insert mode
+set history=1000                "Store lots of :cmdline history
+set showcmd                     "Show incomplete cmds down the bottom
+set showmode                    "Show current mode down the bottom
+set gcr=a:blinkon0              "Disable cursor blink
+set novisualbell                "No sounds
+set noerrorbells                "No noise
+set autoread                    "Reload files changed outside vim
+set history=256                 "Number of things to remember in history.
+set showmatch                   "Show matching brackets.
+set laststatus=2                "Always show status line
+
+" This makes vim act like all other editors, buffers can
+" exist in the background without being in a window.
+" http://items.sjbach.com/319/configuring-vim-right
+set hidden
+
+syntax on                       "Turn on syntax highlight
+
+" ==================== Search Settings ====================
+
+set incsearch                   "Find the next match as we type the search
+set hlsearch                    "Hilight searches by default
+set viminfo='100,f1             "Save up to 100 marks, enable capital marks
+
+" =================== Turn Off Swap Files =================
+
+set noswapfile
+set nobackup
+set nowb
+
+" =================== Persistent Undo =====================
+" Keep undo history across sessions, by storing in file.
+" Only works all the time.
+
+set undodir=~/.vim/backups
+set undofile
+
+" ==================== Indentation ========================
+
+set autoindent
+set smartindent
+set smarttab
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
+set expandtab
+
+filetype indent on
+augroup myfiletypes
+  " Clear old autocmds in group
+  autocmd!
+  " autoindent with two spaces, always expand tabs
+  autocmd FileType ruby,eruby,yaml set ai sw=2 sts=2 et
+  autocmd FileType css set ai sw=2 sts=2 et
+  autocmd FileType js set ai sw=4 sts=4 et
+  autocmd FileType javascript set tabstop=4 shiftwidth=4 expandtab
+  autocmd BufNewFile,BufRead Jakefile set filetype=javascript
+augroup END
+
+" Display tabs and trailing spaces visually
+set list listchars=tab:\ \ ,trail:·
+
+set nowrap       "Don't wrap lines
+set linebreak    "Wrap lines at convenient points
+
+" ===================== Folds ============================
+
+set foldmethod=indent   "fold based on indent
+set foldnestmax=3       "deepest fold is 3 levels
+set nofoldenable        "dont fold by default
+
+" ===================== Completion =======================
+
+set wildmode=list:longest
+set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
+set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
+set wildignore+=*vim/backups*
+set wildignore+=*sass-cache*
+set wildignore+=*DS_Store*
+set wildignore+=vendor/rails/**
+set wildignore+=vendor/cache/**
+set wildignore+=*.gem
+set wildignore+=log/**
+set wildignore+=tmp/**
+set wildignore+=*.png,*.jpg,*.gif
+
+" ===================== WinManager =======================
+
+" tags
+set tags=tags;
+set autochdir
+" winmanager
+let g:winManagerWindowLayout='FileExplorer|TagList'
+let g:winManagerWidth = 50
+nmap wm :WMToggle<CR>
+" grep
+nnoremap <silent> <F3> :Grep<CR>
+" tag list
+let Tlist_Show_One_File=1
+let Tlist_Exit_OnlyWindow=1
+
+" ======================= Rails ==========================
+" Change which file opens after executing :Rails command
+let g:rails_default_file='config/database.yml'
+
+for f in split(glob('~/.vim/plugin/settings/*.vim'), '\n')
+  exe 'source' f
+endfor
