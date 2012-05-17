@@ -23,6 +23,7 @@ Bundle 'maksimr/vim-jsbeautify.git'
 Bundle 'tpope/vim-fugitive'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 Bundle 'ervandew/supertab'
+Bundle 'flazz/vim-colorschemes'
 " vim-scripts repos
 Bundle 'L9'
 Bundle 'FuzzyFinder'
@@ -61,6 +62,7 @@ set autoread                    "Reload files changed outside vim
 set history=256                 "Number of things to remember in history.
 set showmatch                   "Show matching brackets.
 set laststatus=2                "Always show status line
+colorscheme desert256          "color schemes
 
 " This makes vim act like all other editors, buffers can
 " exist in the background without being in a window.
