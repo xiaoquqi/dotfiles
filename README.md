@@ -10,6 +10,7 @@ Create link:
     git clone git://github.com:xiaoquqi/dotfiles.git ~/dotfiles
     ln -s dotfiles/vim/vimrc .vimrc
     ln -s dotfiles/vim .vim
+    cd dotfiles
     git submodule update --init
 
 Install vim plugins:
