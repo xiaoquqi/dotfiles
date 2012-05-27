@@ -7,7 +7,7 @@ This is my own vim configuration files for both Linux and Mac OS
 Create link:
 
     cd ~
-    git clone git://github.com:xiaoquqi/dotfiles.git ~/dotfiles
+    git clone git://github.com/xiaoquqi/dotfiles.git ~/dotfiles
     ln -s dotfiles/vim/vimrc .vimrc
     ln -s dotfiles/vim .vim
     cd dotfiles
