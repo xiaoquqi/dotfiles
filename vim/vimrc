@@ -113,6 +113,7 @@ augroup myfiletypes
   autocmd FileType js set ai sw=4 sts=4 et
   autocmd FileType javascript set tabstop=4 shiftwidth=4 expandtab
   autocmd BufNewFile,BufRead Jakefile set filetype=javascript
+  autocmd BufNewFile,BufRead *.hb set filetype=html
 augroup END
 
 " Display tabs and trailing spaces visually
