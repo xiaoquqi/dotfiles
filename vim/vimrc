@@ -32,6 +32,7 @@ Bundle 'taglist.vim'
 Bundle 'winmanager'
 Bundle 'Markdown'
 Bundle 'jQuery'
+Bundle 'python.vim'
 " non github repos
 " Bundle 'git://git.wincent.com/command-t.git'
 
@@ -62,10 +63,11 @@ set autoread                    "Reload files changed outside vim
 set history=256                 "Number of things to remember in history.
 set showmatch                   "Show matching brackets.
 set laststatus=2                "Always show status line
-let os = substitute(system('uname'), "\n", "", "")
-if os == "Linux"
+" As I use dark background in mac, I also can use this colorscheme on mac
+"let os = substitute(system('uname'), "\n", "", "")
+"if os == "Linux"
   colorscheme desert256          "color schemes
-endif
+"endif
 
 " This makes vim act like all other editors, buffers can
 " exist in the background without being in a window.
