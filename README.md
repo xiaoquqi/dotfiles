@@ -4,18 +4,16 @@ This is my own vim configuration files for both Linux and Mac OS
 
 ## vim initialize
 
-Create link:
+VIM Init:
 
-    cd ~
-    git clone git://github.com/xiaoquqi/dotfiles.git ~/dotfiles
-    ln -s dotfiles/vim/vimrc .vimrc
-    ln -s dotfiles/vim .vim
+    git clone git://github.com/xiaoquqi/dotfiles.git
     cd dotfiles
-    git submodule update --init
+    # this will backup your old .vimrc and .vim then create the link and 
+    # install all neccessary vim plugins for you
+    ./vim_init.sh
 
-Install vim plugins:
+Manually Install vim plugins, Launch vim, in vim run:
 
-    Launch vim
     Run :BundleInstall
 
 or use command line:
