@@ -1,5 +1,2 @@
 vim/bundle
-vim/autoload
-vim/indent
-vim/record
-vim/syntax
+!vim/bundle/vundle
