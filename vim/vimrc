@@ -24,6 +24,8 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 Bundle 'ervandew/supertab'
 Bundle 'flazz/vim-colorschemes'
+" http://linux-wiki.cn/wiki/zh-hans/%E9%85%8D%E7%BD%AE%E5%9F%BA%E4%BA%8EVim%E7%9A%84Python%E7%BC%96%E7%A8%8B%E7%8E%AF%E5%A2%83
+Bundle 'nvie/vim-flake8.git'
 " vim-scripts repos
 Bundle 'L9'
 Bundle 'FuzzyFinder'
@@ -84,7 +86,8 @@ set viminfo='100,f1             "Save up to 100 marks, enable capital marks
 
 " =================== Turn Off Swap Files =================
 
-set noswapfile
+" enable swap file to avoid duplicate open
+"set noswapfile
 set nobackup
 set nowb
 
@@ -105,7 +108,7 @@ set softtabstop=2
 set tabstop=2
 set expandtab
 
-filetype indent on
+"filetype indent on
 augroup myfiletypes
   " Clear old autocmds in group
   autocmd!
@@ -116,6 +119,10 @@ augroup myfiletypes
   autocmd FileType javascript set tabstop=4 shiftwidth=4 expandtab
   autocmd BufNewFile,BufRead Jakefile set filetype=javascript
   autocmd BufNewFile,BufRead *.hb set filetype=html
+  " http://linux-wiki.cn/wiki/zh-hans/%E9%85%8D%E7%BD%AE%E5%9F%BA%E4%BA%8EVim%E7%9A%84Python%E7%BC%96%E7%A8%8B%E7%8E%AF%E5%A2%83
+  autocmd FileType python set ai tabstop=4 shiftwidth=4 softtabstop=4 et
+  " http://stackoverflow.com/questions/2063175/vim-insert-mode-comments-go-to-start-of-line
+  autocmd FileType python set foldmethod=indent nosmartindent
 augroup END
 
 " Display tabs and trailing spaces visually
@@ -164,6 +171,13 @@ let Tlist_Exit_OnlyWindow=1
 " Change which file opens after executing :Rails command
 
 let g:rails_default_file='config/database.yml'
+
+" ====================== Python =========================
+" http://linux-wiki.cn/wiki/zh-hans/%E9%85%8D%E7%BD%AE%E5%9F%BA%E4%BA%8EVim%E7%9A%84Python%E7%BC%96%E7%A8%8B%E7%8E%AF%E5%A2%83
+" forbidden PyFlakes to use QuickFix, Press F7 will call flake8
+let g:pyflakes_use_quickfix = 0
+" ignore part of errors
+let g:flake8_ignore="E501"
 
 " ===================== supertab =========================
 
