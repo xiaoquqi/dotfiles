@@ -23,4 +23,10 @@ Manually Install vim plugins, Launch vim, in vim run:
 or use command line:
 
     vim +BundleInstall +qall
+    
+Before you run vim, you also need to install an extra package called ctags, in ubuntu 12.04, you can run:
+
+    sudo apt-get install exuberant-ctags
+    
+Otherwise, you need to build from source http://ctags.sf.net
 
