@@ -4,3 +4,4 @@ vim/autoload
 vim/indent
 vim/record
 vim/syntax
+mytags
