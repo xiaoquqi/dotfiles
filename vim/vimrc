@@ -125,6 +125,8 @@ augroup myfiletypes
   autocmd FileType javascript set tabstop=4 shiftwidth=4 expandtab
   autocmd BufNewFile,BufRead Jakefile set filetype=javascript
   autocmd BufNewFile,BufRead *.hb set filetype=html
+  autocmd BufNewFile,BufRead Vagrantfile set filetype=ruby
+  autocmd BufNewFile,BufRead *.sls set filetype=yaml
   " http://linux-wiki.cn/wiki/zh-hans/%E9%85%8D%E7%BD%AE%E5%9F%BA%E4%BA%8EVim%E7%9A%84Python%E7%BC%96%E7%A8%8B%E7%8E%AF%E5%A2%83
   autocmd FileType python set ai tabstop=4 shiftwidth=4 softtabstop=4 et
   " http://stackoverflow.com/questions/2063175/vim-insert-mode-comments-go-to-start-of-line
