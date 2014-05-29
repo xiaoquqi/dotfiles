@@ -26,6 +26,8 @@ Bundle 'ervandew/supertab'
 Bundle 'flazz/vim-colorschemes'
 " http://linux-wiki.cn/wiki/zh-hans/%E9%85%8D%E7%BD%AE%E5%9F%BA%E4%BA%8EVim%E7%9A%84Python%E7%BC%96%E7%A8%8B%E7%8E%AF%E5%A2%83
 Bundle 'nvie/vim-flake8.git'
+" puppet script
+Bundle 'rodjek/vim-puppet'
 " vim-scripts repos
 Bundle 'L9'
 Bundle 'FuzzyFinder'
