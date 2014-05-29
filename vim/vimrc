@@ -12,7 +12,7 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " let Vundle manage Vundle
-" required! 
+" required!
 Bundle 'gmarik/vundle'
 
 " My Bundles here:
@@ -66,10 +66,15 @@ set history=256                 "Number of things to remember in history.
 set showmatch                   "Show matching brackets.
 set laststatus=2                "Always show status line
 " As I use dark background in mac, I also can use this colorscheme on mac
-"let os = substitute(system('uname'), "\n", "", "")
-"if os == "Linux"
+set t_Co=256
+let os = substitute(system('uname'), "\n", "", "")
+if os == "Linux"
   colorscheme desert256          "color schemes
-"endif
+endif
+" For Mac I use iterm2 as my default terminal, and use rippedcasts as
+" default theme for terminal(https://github.com/mdw123/rippedcasts)
+" Here I use default vim theme here, but you can still set your favourite
+" in else condition above.
 
 " This makes vim act like all other editors, buffers can
 " exist in the background without being in a window.
@@ -88,6 +93,7 @@ set viminfo='100,f1             "Save up to 100 marks, enable capital marks
 
 " enable swap file to avoid duplicate open
 "set noswapfile
+set directory=~/tmp,/tmp
 set nobackup
 set nowb
 
@@ -119,6 +125,8 @@ augroup myfiletypes
   autocmd FileType javascript set tabstop=4 shiftwidth=4 expandtab
   autocmd BufNewFile,BufRead Jakefile set filetype=javascript
   autocmd BufNewFile,BufRead *.hb set filetype=html
+  autocmd BufNewFile,BufRead Vagrantfile set filetype=ruby
+  autocmd BufNewFile,BufRead *.sls set filetype=yaml
   " http://linux-wiki.cn/wiki/zh-hans/%E9%85%8D%E7%BD%AE%E5%9F%BA%E4%BA%8EVim%E7%9A%84Python%E7%BC%96%E7%A8%8B%E7%8E%AF%E5%A2%83
   autocmd FileType python set ai tabstop=4 shiftwidth=4 softtabstop=4 et
   " http://stackoverflow.com/questions/2063175/vim-insert-mode-comments-go-to-start-of-line
@@ -155,7 +163,10 @@ set wildignore+=*.png,*.jpg,*.gif
 " ===================== WinManager =======================
 
 " tags
-set tags=tags;
+" It's better to set crontab job to generate tags for your workspace
+" Example:
+" 1 * * * * ctags -R -o ~/.vim/mytags ~/workspace
+set tags=~/.vim/mytags
 set autochdir
 " winmanager
 let g:winManagerWindowLayout='FileExplorer|TagList'
@@ -187,3 +198,10 @@ let g:SuperTabDefaultCompletionType = '<C-X><C-U>'
 for f in split(glob('~/.vim/plugin/settings/*.vim'), '\n')
   exe 'source' f
 endfor
+
+" ======================= ctags ===========================
+au BufWritePost *.c,*.cpp,*.h,*.py,*.rb silent! !ctags -R &
+" C-\ - Open the definition in a new tab
+" A-] - Open the definition in a vertical split
+map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
