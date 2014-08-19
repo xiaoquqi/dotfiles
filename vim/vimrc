@@ -28,6 +28,7 @@ Bundle 'flazz/vim-colorschemes'
 Bundle 'nvie/vim-flake8.git'
 " puppet script
 Bundle 'rodjek/vim-puppet'
+Bundle 'kchmck/vim-coffee-script'
 " vim-scripts repos
 Bundle 'L9'
 Bundle 'FuzzyFinder'
@@ -69,9 +70,21 @@ set showmatch                   "Show matching brackets.
 set laststatus=2                "Always show status line
 " As I use dark background in mac, I also can use this colorscheme on mac
 set t_Co=256
+" Schema settings, for iterm2 settings
+" http://stackoverflow.com/questions/7278267/incorrect-colors-with-vim-in-iterm2-using-solarized
+" https://github.com/altercation/solarized
 let os = substitute(system('uname'), "\n", "", "")
 if os == "Linux"
   colorscheme desert256          "color schemes
+endif
+
+if os == "Darwin"
+  set background=dark
+  " solarized options
+  let g:solarized_visibility = "high"
+  let g:solarized_contrast = "high"
+  let g:solarized_termcolors=16
+  colorscheme solarized
 endif
 " For Mac I use iterm2 as my default terminal, and use rippedcasts as
 " default theme for terminal(https://github.com/mdw123/rippedcasts)
@@ -202,7 +215,7 @@ for f in split(glob('~/.vim/plugin/settings/*.vim'), '\n')
 endfor
 
 " ======================= ctags ===========================
-au BufWritePost *.c,*.cpp,*.h,*.py,*.rb silent! !ctags -R &
+"au BufWritePost *.c,*.cpp,*.h,*.py,*.rb silent! !ctags -R &
 " C-\ - Open the definition in a new tab
 " A-] - Open the definition in a vertical split
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
