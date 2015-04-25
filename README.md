@@ -13,11 +13,10 @@ Tested on Ubuntu 14.04
 
 ### Ubuntu
 
-Before you run vim, you also need to install an extra package called ctags, in ubuntu 12.04, you can run:
+Before you run vim, you also need to install an extra package called ctags, on ubuntu 14.04,
+you can run:
 
-    sudo apt-get install exuberant-ctags
-
-Otherwise, you need to build from source http://ctags.sf.net
+    sudo apt-get install -y exuberant-ctags build-essential cmake python-dev
 
 ### vim initialization:
 
