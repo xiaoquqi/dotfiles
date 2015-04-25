@@ -221,16 +221,6 @@ let g:pyflakes_use_quickfix = 0
 let g:flake8_ignore="E501"
 
 "------------------------------------------------------------
-" supertab
-
-let g:SuperTabRetainCompletionType = 2
-let g:SuperTabDefaultCompletionType = '<C-X><C-U>'
-
-for f in split(glob('~/.vim/plugin/settings/*.vim'), '\n')
-  exe 'source' f
-endfor
-
-"------------------------------------------------------------
 " ctags
 
 "au BufWritePost *.c,*.cpp,*.h,*.py,*.rb silent! !ctags -R &
