@@ -50,4 +50,7 @@ git clone https://github.com/gmarik/Vundle.vim.git $VUNDLE_PATH
 # Install vim plugins
 vim +PluginInstall +qall
 
+# Install YouCompleteMe
+$BASE_DIR/vim/bundle/YouCompleteMe/install.sh
+
 echo "Vim Configuration Done"

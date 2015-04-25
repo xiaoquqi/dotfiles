@@ -36,6 +36,7 @@ Plugin 'nvie/vim-flake8.git'               " Flake8 plugin for Vim(https://githu
 Plugin 'rodjek/vim-puppet'                 " Puppet niceties for your Vim setup(https://github.com/rodjek/vim-puppet)
 Plugin 'kchmck/vim-coffee-script'          " CoffeeScript support for vim(https://github.com/kchmck/vim-coffee-script)
 Plugin 'kien/ctrlp.vim'                    " Fuzzy file, buffer, mru, tag, etc finder(https://github.com/kien/ctrlp.vim)
+Plugin 'Valloric/YouCompleteMe'            " A code-completion engine for Vim
 
 " vim-scripts repos
 Plugin 'L9'
