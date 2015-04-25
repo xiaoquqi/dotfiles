@@ -37,6 +37,7 @@ Plugin 'rodjek/vim-puppet'                 " Puppet niceties for your Vim setup(
 Plugin 'kchmck/vim-coffee-script'          " CoffeeScript support for vim(https://github.com/kchmck/vim-coffee-script)
 Plugin 'kien/ctrlp.vim'                    " Fuzzy file, buffer, mru, tag, etc finder(https://github.com/kien/ctrlp.vim)
 Plugin 'Valloric/YouCompleteMe'            " A code-completion engine for Vim
+Plugin 'davidhalter/jedi-vim'              " Using the jedi autocompletion library for VIM
 
 " vim-scripts repos
 Plugin 'L9'
@@ -109,6 +110,33 @@ set foldmethod=indent           " fold based on indent
 set foldnestmax=3               " deepest fold is 3 levels
 set nofoldenable                " dont fold by default
 
+" Leader setting
+let mapleader = "," " rebind <Leader> key
+
+" Custom mappings
+vnoremap < <gv  " better indentation
+vnoremap > >gv  " better indentation
+map <Leader>a ggVG  " select all
+
+" Movement
+" bind Ctrl + <movement> keys to move around the windows, instead of using Ctrl + w + <movement>
+map <c-j> <c-w>j
+map <c-k> <c-w>k
+map <c-l> <c-w>l
+map <c-h> <c-w>h
+
+" tabs
+map <Leader>, <esc>:tabprevious<CR>
+map <Leader>. <esc>:tabnext<CR>
+
+" sort
+vnoremap <Leader>s :sort<CR>
+
+" Show trailing whitespace
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+au InsertLeave * match ExtraWhitespace /\s\+$/
+map <Leader>x :%s/\s\+$//
+
 
 "------------------------------------------------------------
 " Schema settings, for iterm2 settings
@@ -174,8 +202,8 @@ augroup END
 "------------------------------------------------------------
 " Completion
 set wildmode=list:longest
-set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
-set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
+set wildmenu
+set wildignore=*.o,*.obj,*~
 set wildignore+=*vim/backups*
 set wildignore+=*sass-cache*
 set wildignore+=*DS_Store*
@@ -185,31 +213,23 @@ set wildignore+=*.gem
 set wildignore+=log/**
 set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif
+set wildignore+=*.pyc
+set wildignore+=*_build/*
+set wildignore+=*/coverage/*
 
 "------------------------------------------------------------
-" tags
-" It's better to set crontab job to generate tags for your workspace
-" Example:
-" 1 * * * * ctags -R -o ~/.vim/mytags ~/workspace
-set tags=~/.vim/mytags
-set autochdir
-
 " winmanager
-let g:winManagerWindowLayout='FileExplorer|TagList'
+let g:winManagerWindowLayout = 'FileExplorer|TagList'
 let g:winManagerWidth = 50
 nmap wm :WMToggle<CR>
 
-" grep
-nnoremap <silent> <F3> :Grep<CR>
-
 " tag list
-let Tlist_Show_One_File=1
-let Tlist_Exit_OnlyWindow=1
+let Tlist_Show_One_File = 1
+let Tlist_Exit_OnlyWindow = 1
 
 "------------------------------------------------------------
 " Rails
-
-let g:rails_default_file='config/database.yml' " Change which file opens after executing :Rails command
+let g:rails_default_file = 'config/database.yml' " Change which file opens after executing :Rails command
 
 "------------------------------------------------------------
 " Python
@@ -221,10 +241,9 @@ let g:pyflakes_use_quickfix = 0
 let g:flake8_ignore="E501"
 
 "------------------------------------------------------------
-" ctags
-
-"au BufWritePost *.c,*.cpp,*.h,*.py,*.rb silent! !ctags -R &
-" C-\ - Open the definition in a new tab
-" A-] - Open the definition in a vertical split
-map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
-map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+" Settings for ctrlp
+let g:ctrlp_max_height = 30
+let g:ctrlp_user_command = [
+    \ '.git', 'cd %s && git ls-files . -co --exclude-standard',
+    \ 'find %s -type f'
+    \ ]
