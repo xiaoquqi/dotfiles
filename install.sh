@@ -23,7 +23,9 @@ DOT_VIM="$HOME/.vim"
 DOT_VIMRC_BAK="$DOT_VIMRC.bak"
 DOT_VIM_BAK="$DOT_VIM.bak"
 
-VUNDLE_PATH="$BASE_DIR/vim/bundle/Vundle.vim"
+BUNDLE_PATH="$BASE_DIR/vim/bundle"
+VUNDLE_PATH="$BUNDLE_PATH/Vundle.vim"
+YOUCOMPLETEME_PATH="$BUNDLE_PATH/YouCompleteMe"
 
 if [[ -e $DOT_VIMRC ]]; then
   echo "Backing up $DOT_VIMRC to $DOT_VIMRC_BAK"
@@ -40,17 +42,32 @@ if [[ -e $DOT_VIM ]]; then
 fi
 ln -s $NEW_VIM $DOT_VIM
 
+# vundle Installation
 if [[ -e $VUNDLE_PATH ]]; then
-  rm -rf $VUNDLE_PATH
+  cd $VUNDLE_PATH
+  git pull
+else
+  # get vundle
+  mkdir -p $VUNDLE_PATH
+  git clone https://github.com/gmarik/Vundle.vim.git $VUNDLE_PATH
 fi
 
-mkdir -p $VUNDLE_PATH
-git clone https://github.com/gmarik/Vundle.vim.git $VUNDLE_PATH
+# YouCompleteMe Dependencies Installation
+if [[ -e $YOUCOMPLETEME_PATH ]]; then
+  cd $YOUCOMPLETEME_PATH
+  git pull
+else
+  mkdir -p $YOUCOMPLETEME_PATH
+  git clone https://github.com/Valloric/YouCompleteMe.git $YOUCOMPLETEME_PATH
+fi
+
+cd $YOUCOMPLETEME_PATH
+git submodule update --init --recursive
+
+# Install YouCompleteMe
+$YOUCOMPLETEME_PATH/install.sh
 
 # Install vim plugins
 vim +PluginInstall +qall
-
-# Install YouCompleteMe
-$BASE_DIR/vim/bundle/YouCompleteMe/install.sh
 
 echo "Vim Configuration Done"
