@@ -1,12 +1,16 @@
 #!/bin/bash
 
-# This scirpt used for vim configuration initialization
+#
+# This scirpt used for all dotfiles configurations. Currently this only
+# contains vim configurations.
+#
+# Create link to .vimrc and .vim directory, if they are already existing,
+# rename them to .vimrc.bak .vim.bak
+#
 # Author: Ray Sun
 # Email: xiaoquqi@gmail.com
-# Latest Update: 2015-03-30
-
-# Make link to .vimrc and .vim directory, if they are already existing,
-# rename them to .vimrc.bak .vim.bak
+# Latest Update: 2015-04-25
+#
 
 BASE_DIR=$(cd $(dirname $0); pwd)
 
@@ -18,6 +22,8 @@ DOT_VIM="$HOME/.vim"
 
 DOT_VIMRC_BAK="$DOT_VIMRC.bak"
 DOT_VIM_BAK="$DOT_VIM.bak"
+
+VUNDLE_PATH="$BASE_DIR/vim/bundle/Vundle.vim"
 
 if [[ -e $DOT_VIMRC ]]; then
   echo "Backing up $DOT_VIMRC to $DOT_VIMRC_BAK"
@@ -34,11 +40,14 @@ if [[ -e $DOT_VIM ]]; then
 fi
 ln -s $NEW_VIM $DOT_VIM
 
-# Go back to dotfiles do git submodule init
-cd $BASE_DIR
-git submodule update --init
+if [[ -e $VUNDLE_PATH ]]; then
+  rm -rf $VUNDLE_PATH
+fi
+
+mkdir -p $VUNDLE_PATH
+git clone https://github.com/gmarik/Vundle.vim.git $VUNDLE_PATH
 
 # Install vim plugins
-vim +BundleInstall +qall
+vim +PluginInstall +qall
 
 echo "Vim Configuration Done"
