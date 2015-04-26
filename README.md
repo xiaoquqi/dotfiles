@@ -18,6 +18,13 @@ you can run:
 
     sudo apt-get install -y exuberant-ctags build-essential cmake python-dev
 
+### Mac
+
+If you are using brew, you need to install cmake to build libs for
+YouCompleteMe:
+
+    brew install cmake
+
 ### vim initialization:
 
     git clone git://github.com/xiaoquqi/dotfiles.git
