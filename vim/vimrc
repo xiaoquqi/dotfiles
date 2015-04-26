@@ -38,6 +38,7 @@ Plugin 'kchmck/vim-coffee-script'          " CoffeeScript support for vim(https:
 Plugin 'kien/ctrlp.vim'                    " Fuzzy file, buffer, mru, tag, etc finder(https://github.com/kien/ctrlp.vim)
 Plugin 'Valloric/YouCompleteMe'            " A code-completion engine for Vim
 Plugin 'davidhalter/jedi-vim'              " Using the jedi autocompletion library for VIM
+Plugin 'Lokaltog/vim-powerline'            " vim statusline utility(https://github.com/Lokaltog/vim-powerline)
 
 " vim-scripts repos
 Plugin 'L9'
@@ -247,3 +248,8 @@ let g:ctrlp_user_command = [
     \ '.git', 'cd %s && git ls-files . -co --exclude-standard',
     \ 'find %s -type f'
     \ ]
+
+"------------------------------------------------------------
+" Settings for vim-powerline
+set laststatus=2
+let g:Powerline_symbols = 'fancy'

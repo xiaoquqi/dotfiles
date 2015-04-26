@@ -25,16 +25,18 @@ DOT_VIM_BAK="$DOT_VIM.bak"
 
 BUNDLE_PATH="$BASE_DIR/vim/bundle"
 VUNDLE_PATH="$BUNDLE_PATH/Vundle.vim"
+
 YOUCOMPLETEME_PATH="$BUNDLE_PATH/YouCompleteMe"
+YCM_CLIENT_SUPPORT_PATH="$YOUCOMPLETEME_PATH/third_party/ycmd/ycm_client_support.so"
 
 if [[ -e $DOT_VIMRC ]]; then
-  echo "Backing up $DOT_VIMRC to $DOT_VIMRC_BAK"
+  echo "Backup $DOT_VIMRC to $DOT_VIMRC_BAK"
   mv $DOT_VIMRC $DOT_VIMRC_BAK
 fi
 ln -s $NEW_VIMRC $DOT_VIMRC
 
 if [[ -e $DOT_VIM ]]; then
-  echo "Backing up $DOT_VIM to $DOT_VIM_BAK"
+  echo "Backup $DOT_VIM to $DOT_VIM_BAK"
   if [[ -e $DOT_VIM_BAK ]]; then
     rm -rf $DOT_VIM_BAK
   fi
@@ -65,7 +67,9 @@ cd $YOUCOMPLETEME_PATH
 git submodule update --init --recursive
 
 # Install YouCompleteMe
-$YOUCOMPLETEME_PATH/install.sh
+if [[ ! -e $YCM_CLIENT_SUPPORT_PATH ]]; then
+  $YOUCOMPLETEME_PATH/install.sh
+fi
 
 # Install vim plugins
 vim +PluginInstall +qall
