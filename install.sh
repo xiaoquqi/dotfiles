@@ -68,7 +68,8 @@ git submodule update --init --recursive
 
 # Install YouCompleteMe
 if [[ ! -e $YCM_CLIENT_SUPPORT_PATH ]]; then
-  $YOUCOMPLETEME_PATH/install.sh
+  # Enable Javascript supported
+  $YOUCOMPLETEME_PATH/install.py --tern-completer
 fi
 
 # Install vim plugins
