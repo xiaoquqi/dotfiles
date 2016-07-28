@@ -264,3 +264,8 @@ let g:ctrlp_user_command = [
     \ '.git', 'cd %s && git ls-files . -co --exclude-standard',
     \ 'find %s -type f'
     \ ]
+
+"------------------------------------------------------------
+" Show Colume Vertical Line in column 74
+highlight ColorColumn ctermbg=gray
+set colorcolumn=74
