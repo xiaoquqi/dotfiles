@@ -50,6 +50,9 @@ Plugin 'python.vim'
 " non github repos
 "Plugin 'git://git.wincent.com/command-t.git'
 
+" show git diff
+Plugin 'airblade/vim-gitgutter'
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -269,3 +272,5 @@ let g:ctrlp_user_command = [
 " Show Colume Vertical Line in column 74
 highlight ColorColumn ctermbg=gray
 set colorcolumn=74
+
+set encoding=utf-8
