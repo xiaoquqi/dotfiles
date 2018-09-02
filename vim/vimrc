@@ -152,26 +152,26 @@ map <Leader>x :%s/\s\+$//
 
 let os = substitute(system('uname'), "\n", "", "")
 
-if os == "Linux"
-  try
-    colorscheme desert256
-  catch /^Vim\%((\a\+)\)\=:E185/
-    " deal with it
-  endtry
-endif
+"if os == "Linux"
+"  try
+"    colorscheme desert256
+"  catch /^Vim\%((\a\+)\)\=:E185/
+"    " deal with it
+"  endtry
+"endif
 
-if os == "Darwin"
-  set background=dark
-  " solarized options
-  let g:solarized_visibility = "high"
-  let g:solarized_contrast = "high"
-  let g:solarized_termcolors=16
-  try
-    colorscheme solarized
-  catch /^Vim\%((\a\+)\)\=:E185/
-    " deal with it
-  endtry
-endif
+"if os == "Darwin"
+"  set background=dark
+"  " solarized options
+"  let g:solarized_visibility = "high"
+"  let g:solarized_contrast = "high"
+"  let g:solarized_termcolors=16
+"  try
+"    colorscheme solarized
+"  catch /^Vim\%((\a\+)\)\=:E185/
+"    " deal with it
+"  endtry
+"endif
 
 " For Mac I use iterm2 as my default terminal, and use rippedcasts as
 " default theme for terminal(https://github.com/mdw123/rippedcasts)
@@ -270,7 +270,9 @@ let g:ctrlp_user_command = [
 
 "------------------------------------------------------------
 " Show Colume Vertical Line in column 74
-highlight ColorColumn ctermbg=gray
-set colorcolumn=74
-
 set encoding=utf-8
+"highlight ColorColumn ctermbg=7
+set colorcolumn=74
+highlight ColorColumn ctermbg=0 guibg=lightgrey
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%81v.\+/
