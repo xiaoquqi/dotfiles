@@ -138,9 +138,9 @@ map <Leader>. <esc>:tabnext<CR>
 vnoremap <Leader>s :sort<CR>
 
 " Show trailing whitespace
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-au InsertLeave * match ExtraWhitespace /\s\+$/
-map <Leader>x :%s/\s\+$//
+"autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+"au InsertLeave * match ExtraWhitespace /\s\+$/
+"map <Leader>x :%s/\s\+$//
 
 
 "------------------------------------------------------------
@@ -273,6 +273,10 @@ let g:ctrlp_user_command = [
 set encoding=utf-8
 "highlight ColorColumn ctermbg=7
 set colorcolumn=74
-highlight ColorColumn ctermbg=0 guibg=lightgrey
+set hlsearch
+hi Search ctermbg=LightYellow
+hi Search ctermfg=Red
+"highlight Search ctermfg=white ctermbg=LightYellow
+"highlight ColorColumn ctermbg=0 guibg=lightgrey
 highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 match OverLength /\%81v.\+/
